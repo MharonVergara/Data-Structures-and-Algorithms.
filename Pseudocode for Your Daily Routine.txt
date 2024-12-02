@@ -1,0 +1,61 @@
+START
+
+PRINT "Starting bedroom cleaning routine"
+
+IF room_is_messy() THEN
+    PRINT "clean the room"
+    FOR each item ON floor DO
+        IF item == trash THEN
+            MOVE item TO trash_bin
+        ELSE
+            MOVE item TO its_correct_place
+        ENDIF
+    ENDFOR
+ENDIF
+
+IF bed_is_messy() THEN
+    PRINT "clean the bed"
+    REMOVE any_items ON bed
+    SMOOTH sheets
+    ADJUST pillows
+    PLACE comforter neatly
+ENDIF
+
+PRINT "Dusting surfaces"
+FOR each surface IN room DO
+    IF surfaceNeedsDusting(surface) THEN
+        USE dustingCloth OR duster TO clean surface
+    ENDIF
+ENDFOR
+
+
+PRINT "Organizing surfaces..."
+FOR each item ON surfaces DO
+    MOVE item TO its_correct_place
+ENDFOR
+
+
+IF floorCleaning() THEN
+    PRINT "Cleaning the floor"
+    IF floor_type == carpet THEN
+        VACUUM floor
+    ELSE
+        SWEEP floor
+        MOP floor IF necessary
+    ENDIF
+ENDIF
+
+IF trash_bin_is_full() THEN
+    PRINT "Emptying trash bin"
+    EMPTY trash_bin INTO main_garbage
+ENDIF
+
+
+PRINT "Performing final inspection..."
+IF room_is_clean() THEN
+    PRINT "Bedroom cleaning completed successfully!"
+ELSE
+    PRINT "Recheck and clean any missed areas."
+ENDIF
+
+END
